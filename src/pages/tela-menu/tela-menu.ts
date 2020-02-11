@@ -22,4 +22,8 @@ export class TelaMenuPage {
     console.log('ionViewDidLoad TelaMenuPage');
   }
 
+  medico(){
+    this.navCtrl.push('MedicoPage');
+  }
+
 }
