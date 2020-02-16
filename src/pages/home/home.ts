@@ -10,7 +10,7 @@ import { NavController, IonicPage, MenuController } from 'ionic-angular';
 export class HomePage {
 
   creds: CredenciaisDTO = {
-    login: "",
+    email: "",
     senha: ""
   }
 
@@ -27,7 +27,7 @@ export class HomePage {
   }
 
   login(){
-
+    console.log(this.creds);
   this.navCtrl.push('TelaMenuPage');
 
   }
