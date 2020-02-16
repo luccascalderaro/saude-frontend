@@ -26,4 +26,12 @@ export class TelaMenuPage {
     this.navCtrl.push('MedicoPage');
   }
 
+  cadMedico(){
+    this.navCtrl.push('CadastroMedicoPage');
+  }
+
+  menuEspecialidadePage(){
+    this.navCtrl.push('MenuEspecialidadePage');
+  }
+
 }

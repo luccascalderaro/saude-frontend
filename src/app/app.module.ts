@@ -1,3 +1,4 @@
+import { EspecialidadeService } from './../services/domain/especialidade.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MedicoService } from '../services/domain/medico.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,7 +31,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MedicoService
+    MedicoService, EspecialidadeService
   ]
 })
 export class AppModule {}

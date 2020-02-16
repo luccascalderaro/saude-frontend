@@ -15,5 +15,6 @@ import { Observable } from "rxjs/Rx";
         findAll() : Observable<MedicoDTO[]> {
             return this.http.get<MedicoDTO[]>(`${API_CONFIG.baseUrl}/medico`);
         }
+        
     }
 
