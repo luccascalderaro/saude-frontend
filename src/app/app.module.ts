@@ -1,3 +1,4 @@
+import { AuthService } from './../services/auth.service';
 import { EspecialidadeService } from './../services/domain/especialidade.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MedicoService } from '../services/domain/medico.service';
@@ -32,7 +33,8 @@ import { ErrorInterceptorProvider } from '../interceptors/error-interceptors';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MedicoService, EspecialidadeService,ErrorInterceptorProvider
+    MedicoService, EspecialidadeService,ErrorInterceptorProvider,
+    AuthService
   ]
 })
 export class AppModule {}
