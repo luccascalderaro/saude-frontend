@@ -13,6 +13,7 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ErrorInterceptorProvider } from '../interceptors/error-interceptors';
+import { StorageService } from '../services/storage.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { ErrorInterceptorProvider } from '../interceptors/error-interceptors';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MedicoService, EspecialidadeService,ErrorInterceptorProvider,
-    AuthService
+    AuthService,StorageService
   ]
 })
 export class AppModule {}

@@ -1,3 +1,4 @@
+import { TelaMenuPage } from './../tela-menu/tela-menu';
 import { AuthService } from './../../services/auth.service';
 import { CredenciaisDTO } from './../../models/credenciais.dto';
 import { Component } from '@angular/core';
@@ -28,13 +29,12 @@ export class HomePage {
    this.menu.swipeEnable(true);
   }
 
-  login(){
-    this.auth.authenticate(this.creds)
-      .subscribe(response => {
-        console.log(response.headers.get('Authorization'));
-        this.navCtrl.setRoot('TelaMenuPage');
-      },
-      error => {});
-  }
+ login(){
+   this.auth.authenticate(this.creds)
+    .subscribe(response => {
+      this.auth.loginComSucesso(response.headers.get('Authorization'));
+      this.navCtrl.setRoot('TelaMenuPage');
+    },error =>{});
+ }
 
 }
