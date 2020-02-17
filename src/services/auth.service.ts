@@ -4,9 +4,15 @@ import { HttpClient } from '@angular/common/http';
 import { CredenciaisDTO } from './../models/credenciais.dto';
 import { Injectable } from "@angular/core";
 import { StorageService } from './storage.service';
+import { JwtHelper }  from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
+
+    //utilizo o jwthelper para extrair o email do token
+    // precisa instalar essas dependencia ->  npm install @angular/http@2.1.2 e npm install --save angular2-jwt^C
+
+    jwtHelper: JwtHelper = new JwtHelper();
 
     constructor(public http: HttpClient, public storage:StorageService) {
 
@@ -25,7 +31,8 @@ export class AuthService {
     loginComSucesso(authorizationValue: string){
         let tok = authorizationValue.substring(7);
         let user: LocalUser = { 
-            token: tok
+            token: tok,
+            email: this.jwtHelper.decodeToken(tok).sub
         };
         this.storage.setLocalUser(user);
     }
@@ -33,5 +40,5 @@ export class AuthService {
     logout(){
         this.storage.setLocalUser(null);
     }
-    
+
 }
