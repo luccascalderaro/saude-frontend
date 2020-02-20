@@ -27,4 +27,8 @@ export class EspecialidadeService {
         );
     }
 
+    delete(obj: EspecialidadeDTO){
+        return this.http.delete(`${API_CONFIG.baseUrl}/especialidades/${obj.id}`);
+    }
+
 }

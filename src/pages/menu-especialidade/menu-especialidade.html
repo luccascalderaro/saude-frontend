@@ -6,17 +6,19 @@
 </ion-header>
 
 <ion-content padding>
-  <button>
-    <button ion-item *ngFor= "let item of items"> 
+  
+    <ion-list ion-item *ngFor= "let item of items"> 
       <h2>{{item.nome}}</h2>
-    </button>
-  </button>
+      <ion-icon name="trash" (click)="delete(item);"></ion-icon>
+    </ion-list>
+  
 
 
-  <form [formGroup] = "formGroup" (ngSubmit) = "cadastrarEspecialidade();" >
+  <form [formGroup] = "formGroup" (ngSubmit)="cadastrarEspecialidade();" >
     <ion-item>
       <ion-label stacked>Nome*</ion-label>
       <ion-input formControlName="nome" type="text"></ion-input>
+      
     </ion-item>
 
     <button ion-button block type="submit" >Salvar Especialidade</button>

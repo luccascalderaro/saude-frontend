@@ -3,7 +3,6 @@ import { API_CONFIG } from './../../config/api.config';
 import { EspecialidadeService } from './../../services/domain/especialidade.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { EspecialidadeDTO } from '../../models/especialidade.dto';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @IonicPage()
@@ -41,7 +40,20 @@ export class MenuEspecialidadePage {
         console.log("Registrou");
         
         this.items.push(this.formGroup.value);
+       this.ionViewDidLoad();
       },error => {});
+  }
+
+  delete(obj: EspecialidadeDTO){
+    let position = this.items.findIndex(x => x.id == obj.id)
+
+    this.especialidadeService.delete(obj)
+      .subscribe(response => {
+        console.log(position);
+        console.log("deletou");
+       this.items.splice(position,1);
+      },error => {console.log("erro")})
+
   }
 
 
