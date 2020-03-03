@@ -27,4 +27,8 @@ export class TelaMenuPage {
     this.navCtrl.push('MenuEspecialidadePage');
   }
 
+  menuPacientePage(){
+    this.navCtrl.push('MenuPacientePage');
+  }
+
 }
