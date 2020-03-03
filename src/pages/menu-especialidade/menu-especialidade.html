@@ -1,4 +1,3 @@
-
 <ion-header>
   <ion-navbar>
     <ion-title>menu-especialidade</ion-title>
@@ -6,21 +5,28 @@
 </ion-header>
 
 <ion-content padding>
-  
-    <ion-list ion-item *ngFor= "let item of items"> 
-      <h2>{{item.nome}}</h2>
-      <ion-icon name="trash" (click)="delete(item);"></ion-icon>
-    </ion-list>
-  
 
+  <ion-label>Especialidade </ion-label>
 
-  <form [formGroup] = "formGroup" (ngSubmit)="cadastrarEspecialidade();" >
+  <ion-scroll style="height:300px" scrollY="true">
+    <ion-card>
+      <ion-list ion-item *ngFor="let item of items">
+        <h2 class="nolinebreak">{{item.nome}}</h2>
+        <ion-icon name="trash" (click)="delete(item);"></ion-icon>
+      </ion-list>
+    </ion-card>
+  </ion-scroll>
+
+  <ion-title>Cadastrar</ion-title>
+  <form [formGroup]="formGroup" (ngSubmit)="cadastrarEspecialidade();">
     <ion-item>
       <ion-label stacked>Nome*</ion-label>
       <ion-input formControlName="nome" type="text"></ion-input>
-      
+
     </ion-item>
 
-    <button ion-button block type="submit" >Salvar Especialidade</button>
+    <button ion-button block type="submit">Salvar</button>
   </form>
+
+
 </ion-content>
