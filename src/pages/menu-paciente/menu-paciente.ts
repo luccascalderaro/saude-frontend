@@ -18,6 +18,7 @@ import { PacienteDTO } from '../../models/paciente.dto';
 export class MenuPacientePage {
 
   pacientes: PacienteDTO[];
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public pacienteService: PacienteService) {
@@ -30,6 +31,10 @@ export class MenuPacientePage {
       this.pacientes = response;
     },error => {});
 
+  }
+
+  toCadastroPaciente(){
+    this.navCtrl.push('CadastroPacientePage');
   }
 
 
