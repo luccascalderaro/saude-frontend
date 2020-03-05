@@ -3,7 +3,7 @@ export interface PacienteDTO{
     nome: string;
     telefone1: string;
     endereco: string;
-    nascimento: Date;
+    nascimento: string;
     email: string;
 
 }

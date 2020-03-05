@@ -3,6 +3,7 @@ import { PacienteDTO } from './../../models/paciente.dto';
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { API_CONFIG } from '../../config/api.config';
+import { ResponseType } from '@angular/http';
 
 @Injectable()
 
@@ -23,9 +24,16 @@ export class PacienteService{
     }
 
     delete(paciente: PacienteDTO ){
-        return this.http.delete(`${API_CONFIG.baseUrl}/pacintes/${paciente.id}`).subscribe(
+        return this.http.delete(`${API_CONFIG.baseUrl}/paciente/${paciente.id}`).subscribe(
             response => {}
         ,error => {});
+    }
+
+    update(id: String, paciente: PacienteDTO){
+        return this.http.put(`${API_CONFIG.baseUrl}/paciente/${id}`,paciente,{
+            observe: 'response',
+            responseType: 'text'
+        });
     }
 
 }

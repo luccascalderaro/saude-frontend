@@ -2,6 +2,7 @@ import { PacienteService } from './../../services/domain/paciente.service';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PacienteDTO } from '../../models/paciente.dto';
+import { isBlank } from 'ionic-angular/umd/util/util';
 
 /**
  * Generated class for the MenuPacientePage page.
@@ -18,6 +19,7 @@ import { PacienteDTO } from '../../models/paciente.dto';
 export class MenuPacientePage {
 
   pacientes: PacienteDTO[];
+  pacienteDto: PacienteDTO = {id: '',nome:'',telefone1:'',endereco:'',email:'',nascimento: '' } ;
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -34,7 +36,12 @@ export class MenuPacientePage {
   }
 
   toCadastroPaciente(){
-    this.navCtrl.push('CadastroPacientePage');
+    this.navCtrl.push('CadastroPacientePage',{paciente: this.pacienteDto});
+  }
+
+  toEditPaciente(paciente: PacienteDTO){
+
+    this.navCtrl.push('CadastroPacientePage',{paciente: paciente});
   }
 
 

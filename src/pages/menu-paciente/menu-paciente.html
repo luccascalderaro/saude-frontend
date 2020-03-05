@@ -14,12 +14,14 @@
 
 
 
-  <ion-list ion-item *ngFor="let pacinte of pacientes">
-    <ion-card>
-      <h2> Matricula: {{pacinte.id}}</h2>
-      <h2 class="nolinebreak"> Nome: {{pacinte.nome}}</h2>
-      
-    </ion-card>
+  <ion-list >
+    <button ion-item *ngFor="let paciente of pacientes" (click)="toEditPaciente(paciente)">
+      <ion-card>
+        <h2> Matricula: {{paciente.id}}</h2>
+        <h2 class="nolinebreak"> Nome: {{paciente.nome}}</h2>
+
+      </ion-card>
+    </button>
   </ion-list>
 
   <button ion-button (click)='toCadastroPaciente()'>Cadastrar</button>

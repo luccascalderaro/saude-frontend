@@ -20,11 +20,20 @@ export class CadastroPacientePage {
 
   paciente: PacienteDTO;
   formGroup: FormGroup;
+  pacienteParam: PacienteDTO;
+
+  nome: String = "";
+  telefone1: String = "";
+  endereco: String = "";
+  nascimento: String = "";
+  email: String = "";
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public servicePaciente: PacienteService) {
+
     this.formGroup = this.formBuilder.group({
       nome: ['', [Validators.required]],
-      telefone1: ['',[]],
+      telefone1: ['', []],
       endereco: [''],
       nascimento: [''],
       email: ['', [Validators.required]]
@@ -33,13 +42,54 @@ export class CadastroPacientePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastroPacientePage');
+    this.pacienteParam = this.navParams.get('paciente');
+    console.log(this.pacienteParam);
+    this.carregarObjeto();
+    this.edit();
   }
 
-  insert(paciente: PacienteDTO) {
-    this.servicePaciente.insert(this.formGroup.value).subscribe(response =>{
+  insert() {
+    this.servicePaciente.insert(this.formGroup.value).subscribe(response => {
 
-    },error => {});
+    }, error => { });
 
+
+  }
+
+  insertOrUpdate(){
+    if(this.pacienteParam.id == ""){
+      this.insert();
+    }
+    else{
+      this.update();
+    }
+  }
+
+  update() {
+    this.servicePaciente.update(this.pacienteParam.id, this.formGroup.value).subscribe(
+      response => { this.pacienteParam.id = "";
+
+      }, error => { }
+    );
+  }
+
+  carregarObjeto() {
+    this.nome = this.pacienteParam.nome;
+    this.telefone1 = this.pacienteParam.telefone1;
+    this.endereco = this.pacienteParam.endereco;
+    this.nascimento = this.pacienteParam.nascimento;
+    this.email = this.pacienteParam.email;
+    console.log(this.nome);
+  }
+
+  edit() {
+    this.formGroup = this.formBuilder.group({
+      nome: [this.nome, [Validators.required]],
+      telefone1: [this.telefone1, []],
+      endereco: [this.endereco],
+      nascimento: [this.nascimento],
+      email: [this.email, [Validators.required]]
+    })
   }
 
 
