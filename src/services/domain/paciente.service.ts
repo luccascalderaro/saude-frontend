@@ -36,4 +36,8 @@ export class PacienteService{
         });
     }
 
+    findByNome(nome: String): Observable<PacienteDTO[]>{
+        return this.http.get<PacienteDTO[]>(`${API_CONFIG.baseUrl}/paciente/nome/${nome}`)
+    }
+
 }

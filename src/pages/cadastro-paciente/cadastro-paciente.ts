@@ -92,5 +92,9 @@ export class CadastroPacientePage {
     })
   }
 
+  voltar(){
+    this.navCtrl.setRoot('MenuPacientePage');
+  }
+
 
 }

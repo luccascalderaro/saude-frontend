@@ -16,6 +16,7 @@ import { ErrorInterceptorProvider } from '../interceptors/error-interceptors';
 import { StorageService } from '../services/storage.service';
 import { AuthInterceptorProvider } from '../interceptors/auth-interceptors';
 import { PacienteService } from '../services/domain/paciente.service';
+import { TelaMenuPage } from '../pages/tela-menu/tela-menu';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PacienteService } from '../services/domain/paciente.service';
   entryComponents: [
     MyApp,
     ListPage
+    
   ],
   providers: [
     StatusBar,

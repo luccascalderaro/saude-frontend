@@ -12,9 +12,20 @@
 
 <ion-content padding>
 
+  <form [formGroup]="formGroup" (ngSubmit)="pesquisar();">
+    <ion-label class="nolinebreak">Pesquisar:</ion-label>
+    <ion-input class="nolinebreak" placeholder="Digite um nome" style="width: 200px;" 
+    formControlName="nome" name="nome" type="text"> </ion-input>
+    <button>
+      <ion-icon class="nolinebreak" name="search"></ion-icon>
+    </button>
 
+  </form>
+  <button (click)='carregarLista()'>
+    <ion-icon class="nolinebreak" name="close"></ion-icon>
+  </button>
 
-  <ion-list >
+  <ion-list>
     <button ion-item *ngFor="let paciente of pacientes" (click)="toEditPaciente(paciente)">
       <ion-card>
         <h2> Matricula: {{paciente.id}}</h2>
